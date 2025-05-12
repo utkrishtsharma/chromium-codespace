@@ -1,0 +1,8 @@
+{
+  "name": "Chromium Browser",
+  "build": { "dockerfile": "Dockerfile" },
+  // Forward port 6080 for noVNC web access
+  "forwardPorts": [6080],
+  // Start VNC and noVNC after container creation
+  "postCreateCommand": "vncserver :1 -geometry 1024x768 -depth 24 & websockify --web /usr/share/novnc 6080 localhost:5901 &"
+}
