@@ -1,14 +1,12 @@
 {
-  "name": "Chromium Codespace",
-  "image": "lscr.io/linuxserver/chromium:latest",
+  "name": "selenium-codespace",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "runArgs": [
-    "--shm-size=2gb",
-    "--security-opt",
-    "seccomp=unconfined",
-    "-e", "PUID=1000",
-    "-e", "PGID=1000",
-    "-e", "TZ=Etc/UTC"
+    "--shm-size=2g"
   ],
-  "forwardPorts": [3000, 3001],
-  "postCreateCommand": "echo 'Chromium container is ready.'"
+  "forwardPorts": [4444, 7900],
+  "postCreateCommand": "pip install selenium",
+  "remoteUser": "vscode"
 }
