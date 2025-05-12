@@ -1,8 +1,14 @@
 {
-  "name": "Chromium Browser",
-  "build": { "dockerfile": "Dockerfile" },
-  // Forward port 6080 for noVNC web access
-  "forwardPorts": [6080],
-  // Start VNC and noVNC after container creation
-  "postCreateCommand": "vncserver :1 -geometry 1024x768 -depth 24 & websockify --web /usr/share/novnc 6080 localhost:5901 &"
+  "name": "Chromium Codespace",
+  "image": "lscr.io/linuxserver/chromium:latest",
+  "runArgs": [
+    "--shm-size=1gb",
+    "--security-opt",
+    "seccomp=unconfined",
+    "-e", "PUID=1000",
+    "-e", "PGID=1000",
+    "-e", "TZ=Etc/UTC"
+  ],
+  "forwardPorts": [3000, 3001],
+  "postCreateCommand": "echo 'Chromium container is ready.'"
 }
