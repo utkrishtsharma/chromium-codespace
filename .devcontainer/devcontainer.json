@@ -2,7 +2,7 @@
   "name": "Chromium Codespace",
   "image": "lscr.io/linuxserver/chromium:latest",
   "runArgs": [
-    "--shm-size=1gb",
+    "--shm-size=2gb",
     "--security-opt",
     "seccomp=unconfined",
     "-e", "PUID=1000",
